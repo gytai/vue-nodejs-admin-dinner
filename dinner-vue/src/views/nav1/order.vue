@@ -14,8 +14,12 @@
                 <Breadcrumb-item>预定晚餐</Breadcrumb-item>
             </Breadcrumb>
         </div>
+        <div>
+
+        </div>
         <Button type="primary" v-on:click="order()" class="orderBtn">预定晚餐</Button>
         <Table  :columns="columns" :data="data" class="order_table"></Table>
+        <div>今日订餐人数：{{num}} 人</div>
     </div>
 </template>
 
@@ -54,7 +58,8 @@
                 ],
                 data: this.getTodayOrder(),
                 nav_name:'预定晚餐',
-                type:1
+                type:1,
+                num:0
             }
         },
         methods: {
@@ -70,6 +75,7 @@
                                time:_self.Util.dateFormat(new Date( ))
                            }
                            _self.data.push(data);
+                           _self.num += 1;
                            _self.$Message.success('预定成功!');
                        }else{
                            _self.$Message.error(res.data.msg);
@@ -91,6 +97,7 @@
                                .then(function (res) {
                                    if(res.data.code == 200){
                                        _self.data.splice(index,1);
+                                       _self.num -= 1;
                                        _self.$Message.success('取消成功!');
                                    }else{
                                        _self.$Message.error(res.data.msg);
@@ -116,6 +123,7 @@
                             obj.time = _self.Util.dateFormat(new Date(obj.time ));
                         });
                         _self.data = res.data.data;
+                        _self.num = res.data.data.length;
                     })
                     .catch(function (error) {
                         _self.data =  [];
