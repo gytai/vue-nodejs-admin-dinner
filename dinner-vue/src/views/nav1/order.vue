@@ -19,7 +19,7 @@
         </div>
         <Button type="primary" v-on:click="order()" class="orderBtn">预定晚餐</Button>
         <Table  :columns="columns" :data="data" class="order_table"></Table>
-        <div>今日订餐人数：{{num}} 人</div>
+        <div style="margin-top: 10px;">今日订餐人数：{{num}} 人</div>
     </div>
 </template>
 
