@@ -23,7 +23,7 @@ router.post('/order', function(req, res, next) {
         return res.send({code:400,msg:'未登录'});
     }
     var now = new Date();
-    if(now.getHours() > 17){
+    if(now.getHours() >= 17){
         return res.send({code:400,msg:'超过五点不能预定'});
     }
     var start_time = common.dateFormat(now,'yyyy-MM-dd 00:00:00');
