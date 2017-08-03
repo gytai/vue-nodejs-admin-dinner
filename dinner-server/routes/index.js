@@ -3,6 +3,10 @@ var router = express.Router();
 var mysql = app.get("mysql");
 var common = require('../utils/common');
 
+router.get('/', function(req, res, next) {
+   res.redirect('/index.html');
+});
+
 /* GET home page. */
 router.get('/get', function(req, res, next) {
     var now = new Date();

@@ -15,7 +15,7 @@ Vue.use(Vuex);
 Vue.use(iView);
 
 Vue.prototype.$ajax = axios;
-Vue.prototype.baseServerUrl = 'http://localhost:33331';
+Vue.prototype.baseServerUrl = 'http://localhost:5178';
 Vue.prototype.Util = Util;
 
 // 路由配置

@@ -1,10 +1,9 @@
 <style scoped>
     .layout{
-        border: 1px solid #d7dde4;
         background: #f5f7f9;
         position: relative;
-        border-radius: 4px;
         overflow: hidden;
+        height: 100%;
     }
     .layout-breadcrumb{
         padding: 10px 15px 0;
@@ -12,9 +11,10 @@
     .layout-content{
         min-height: 200px;
         margin: 15px;
-        overflow: hidden;
+        overflow: auto;
         background: #fff;
         border-radius: 4px;
+        height: 80%;
     }
     .layout-content-main{
         padding: 10px;
@@ -23,7 +23,6 @@
         text-align: center;
         padding: 10px 0 20px;
         color: #9ea7b4;
-        position: absolute;
         bottom: 0;
         width: 100%;
     }
@@ -40,10 +39,10 @@
     }
     .layout-logo-left{
         width: 90%;
-        height: 30px;
-        background: #5b6270;
-        border-radius: 3px;
-        margin: 15px auto;
+        height: 60px;
+        line-height: 60px;
+        font-size: 28px;
+        text-align: center;
     }
     .layout-ceiling-main a{
         color: #9ba7b5;
@@ -51,12 +50,9 @@
     .layout-hide-text .layout-text{
         display: none;
     }
-    .ivu-col{
-        transition: width .2s ease-in-out;
-    }
 </style>
 <template>
-    <div class="layout" :class="{'layout-hide-text': spanLeft < 5}" v-bind:style="{height:screenHeight+'px'}">
+    <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
         <Row type="flex" style="height: 100%;">
             <i-col :span="spanLeft" class="layout-menu-left">
                 <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']">
@@ -115,7 +111,6 @@
             return {
                 spanLeft: 5,
                 spanRight: 19,
-                screenHeight: document.documentElement.clientHeight,
                 name:localStorage.getItem('name')
             }
         },
